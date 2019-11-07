@@ -248,6 +248,26 @@ function middleOfList(list){
 
 }
 
+
+// Q8. Cycle Node
+
+function cycle(list){
+  let currNode = list.head;
+  let otherNode = list.head;
+
+  while(currNode.next !== undefined && currNode.next.next !== undefined){
+    otherNode = otherNode.next; // 1st time is "Bobby"
+    currNode = currNode.next.next; // 1st time is "Carlos"
+
+    if(currNode.value === otherNode.value){
+      return console.log('CYCLE IS TRUE')
+    }
+  }
+
+  return console.log('NO CYCLE FOUND')
+
+}
+
 function main(){
   let SLL = new LinkedList();
   SLL.insertFirst('Apollo');
@@ -262,14 +282,23 @@ function main(){
   SLL.insertAfter('Hotdog', 3);
   SLL.insertAt('Kat', 2);
   SLL.remove('Tauhida');
-  console.log(size(SLL));
-  console.log(display(SLL));
-  isEmpty(SLL);
-  findPrevious(SLL, 'Boomer');
-  findLast(SLL);
+  // console.log(size(SLL));
+  // console.log(display(SLL));
+  // isEmpty(SLL);
+  // findPrevious(SLL, 'Boomer');
+  // findLast(SLL);
   //Reverse(SLL);
-  thirdFromTheEnd(SLL);
-  middleOfList(SLL);
+  // thirdFromTheEnd(SLL);
+  // middleOfList(SLL);
+
+  let Cycle = new LinkedList();
+  Cycle.insertFirst('Albert')
+  Cycle.insert('Bobby')
+  Cycle.insert('Carlos')
+  Cycle.insert('Daniel')
+  Cycle.insert('EJ')
+  console.log(display(Cycle))
+  cycle(Cycle)
 
 }
 //console.log(JSON.stringify(main()));
