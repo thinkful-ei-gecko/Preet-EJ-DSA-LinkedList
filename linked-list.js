@@ -193,16 +193,58 @@ function Reverse(list){
   let tempNode = null;
 
   while(currNode !== undefined){
-    tempNode = currNode.next // 1st case === "Athena"
-    currNode.next = previousNode // "Athena" => null
-    previousNode = currNode // null => Apollo
-    currNode = tempNode // "Apollo" => "Athena"
+    tempNode = currNode.next; // 1st case === "Athena"
+    currNode.next = previousNode; // "Athena" => null
+    previousNode = currNode; // null => Apollo
+    currNode = tempNode; // "Apollo" => "Athena"
     // Sequence after 1st would be "Athena" => "Apollo"
   }
 
-  list.head = previousNode
+  list.head = previousNode;
 
   return console.log(JSON.stringify(list));
+}
+
+//Q6: 3rd from the end
+function thirdFromTheEnd(list){
+  // let previousNode = list.head;
+  // let secondNode = null;
+  // let thirdNode = null;
+  // let currNode = list.head;
+  // while(currNode !== undefined){
+  //   thirdNode = secondNode;
+  //   secondNode = previousNode;
+  //   previousNode = currNode;
+  //   currNode = currNode.next;
+  // }
+  // return console.log(`Third from the end: '${thirdNode.value}'`);
+  let currNode =  list.head;
+
+  while(currNode.next.next.next !== undefined){
+    currNode = currNode.next;
+  }
+  let result = JSON.stringify(currNode);
+  return console.log(result);
+}
+
+//Q7: Middle of a list
+function middleOfList(list){
+  let currNode = list.head;
+  //let previousNode = list.head;
+  let count = 0;
+  let half = (size(list) / 2);
+  if(half % 2 !== 0){
+    return console.log('No middle');
+  }
+  else {
+    while(currNode !== undefined){
+      if(count + 1 === half){
+        return console.log(currNode.value);
+      }
+      currNode = currNode.next;
+      count++;
+    }
+  }
 
 }
 
@@ -214,6 +256,7 @@ function main(){
   SLL.insert('Husker');
   SLL.insert('Starbuck');
   SLL.insert('Tauhida');
+  //SLL.insert('Random Element');
   SLL.remove('squirrel');
   SLL.insertBefore('Athena', 1);
   SLL.insertAfter('Hotdog', 3);
@@ -224,7 +267,9 @@ function main(){
   isEmpty(SLL);
   findPrevious(SLL, 'Boomer');
   findLast(SLL);
-  Reverse(SLL);
+  //Reverse(SLL);
+  thirdFromTheEnd(SLL);
+  middleOfList(SLL);
 
 }
 //console.log(JSON.stringify(main()));
