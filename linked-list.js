@@ -181,7 +181,29 @@ function findLast(list){
     previousNode = currNode;
     currNode = currNode.next;
   }
-  return console.log(previousNode.value);
+  return previousNode;
+}
+
+// Q5. Reverse a List
+
+function Reverse(list){
+
+  let currNode = list.head;
+  let previousNode = null;
+  let tempNode = null;
+
+  while(currNode !== undefined){
+    tempNode = currNode.next // 1st case === "Athena"
+    currNode.next = previousNode // "Athena" => null
+    previousNode = currNode // null => Apollo
+    currNode = tempNode // "Apollo" => "Athena"
+    // Sequence after 1st would be "Athena" => "Apollo"
+  }
+
+  list.head = previousNode
+
+  return console.log(JSON.stringify(list));
+
 }
 
 function main(){
@@ -202,6 +224,15 @@ function main(){
   isEmpty(SLL);
   findPrevious(SLL, 'Boomer');
   findLast(SLL);
+  Reverse(SLL);
+
 }
 //console.log(JSON.stringify(main()));
 main();
+
+
+// Q4. Mystery Program
+
+// Time Complexity: O(n) --> The first while just checks to make sure the list is not 
+// empty but the second while checks for the values and isnt dependent on the first
+// while loop (newNode.next)
